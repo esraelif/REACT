@@ -1,12 +1,18 @@
-import "./App.scss"
 
+import "./App.scss"
 import React from "react";
+import Header from "./components/header/Header";
+import Card from "./components/card/Card";
+
+import data from "./data"
 
 function App() {
   return (
     <div>
 
-      App
+      <Header />
+
+      <Card veri={data} />
     </div>
   );
 }

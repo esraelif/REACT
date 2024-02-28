@@ -1,0 +1,111 @@
+/* .App {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    gap: 100px;
+    margin-top: 150px;
+}
+
+.car {
+    transition: transform 2s ease;
+}
+
+.move-left {
+    animation: moveLeftAnimation 1s forward;
+}
+
+.move-right {
+    animation: moveRightAnimation 1s forward;
+
+}
+
+@keyframes moveLeftAnimation {
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(-100px);
+    }
+}
+
+@keyframes moveRightAnimation {
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(100px);
+    }
+} */
+
+
+.App {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    gap: 100px;
+    margin-top: 150px;
+}
+
+.car {
+    transition: transform 2s ease;
+}
+
+.move-left {
+    animation: moveLeftAnimation 1s forwards;
+}
+
+.move-right {
+    animation: moveRightAnimation 1s forwards;
+}
+
+.move-up {
+    animation: moveUpAnimation 1s forwards;
+}
+
+.move-down {
+    animation: moveDownAnimation 1s forwards;
+}
+
+@keyframes moveLeftAnimation {
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(-100px);
+    }
+}
+
+@keyframes moveRightAnimation {
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(100px);
+    }
+}
+
+@keyframes moveUpAnimation {
+    0% {
+        transform: translateY(0);
+    }
+
+    100% {
+        transform: translateY(-100px);
+    }
+}
+
+@keyframes moveDownAnimation {
+    0% {
+        transform: translateY(0);
+    }
+
+    100% {
+        transform: translateY(100px);
+    }
+}

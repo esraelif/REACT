@@ -1,0 +1,20 @@
+.btn-div{
+    button{
+
+        border-radius: 80px;
+        width: 50%;
+        margin-top: 10px;
+    }
+
+    &--small{
+
+        background-color: burlywood;
+
+    }
+    &--large{
+        background-color: brown;
+
+
+    }
+
+}
