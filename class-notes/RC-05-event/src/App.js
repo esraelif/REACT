@@ -6,6 +6,8 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import Hooks from "./hooks/Hooks";
 import Counter from "./classComponents/Counter";
 import Form from "./form/Form";
+import FormObject from "./form/FormObject";
+import MouseKeyboard from "./mouse-keyboard/MouseKeyBoard";
 
 function App() {
   return (
@@ -15,7 +17,9 @@ function App() {
       {/* <Hooks /> */}
       {/* <Counter /> */}
       {/* <Counter count={20} /> */}
-      <Form />
+      {/* <Form /> */}
+      {/* <FormObject /> */}
+      <MouseKeyboard />
     </div>
   );
 }
