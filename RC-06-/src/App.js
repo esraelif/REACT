@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import LifeCycleMethods from "./components/LifeCycleMethods";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Clock from "./components/Clock";
+import UseEffectAxiosFetch from "./components/UseEffectAxiosFetch";
 function App() {
 
   const [show, setShow] = useState(true)
@@ -15,7 +16,8 @@ function App() {
 
       {/* {show && <LifeCycleMethods />} */}
 
-      {show && <Clock />}
+      {/* {show && <Clock />} */}
+      <UseEffectAxiosFetch />
     </div>
   );
 }
