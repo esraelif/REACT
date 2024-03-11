@@ -1,8 +1,14 @@
 import React from 'react'
 import { AiFillDelete } from "react-icons/ai";
 import { FaEdit } from "react-icons/fa";
+import EditBilgi from './EditBilgi';
+const BilgiList = ({ tutorials, deleteTutorial }) => {
+  // const deleteTutorial = async (id) => {
+  //   await axios.delete(`${url}/${id}/`);
+  // };
 
-const BilgiList = ({ tutorials }) => {
+
+  // bootstrapten hareketli bir yapı olan modal kullanacağım için index.html e bootstrap in script etiketini ekledik
   return (
     <div className="container mt-4">
       <table className="table table-striped">
@@ -25,9 +31,14 @@ const BilgiList = ({ tutorials }) => {
                 <td>{title}</td>
                 <td>{description} </td>
                 <td className="text-center ">
-                  <AiFillDelete type='button' className='text-danger' size={22} />
-                  <FaEdit type='button' className='text-warning me-2' size={22} />
+                  <AiFillDelete type="button" className='text-danger'
+                    size={22}
+                    onClick={() => deleteTutorial(id)}
+                  />
 
+                  <FaEdit type="button" className='text-warning me-2 '
+                    size={20} data-bs-toggle="modal" data-bs-target="#editModal"
+                  />
 
 
                 </td>
@@ -36,9 +47,10 @@ const BilgiList = ({ tutorials }) => {
           })}
         </tbody>
       </table>
-
+      {/* Modal */}
+      <EditBilgi />
     </div>
-  )
+  );
 }
 
 export default BilgiList
