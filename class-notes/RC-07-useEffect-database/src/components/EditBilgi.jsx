@@ -1,6 +1,21 @@
+import axios from 'axios';
 import React from 'react'
 
-const EditBilgi = () => {
+const EditBilgi = ({ item, setItem, getTutorials }) => {
+  const { id, title, description } = item
+
+  //*Home da yapmak uzun oldugu icin buraya ekledik
+  const url = "https://tutorial-api.fullstack.clarusway.com/tutorials/";
+
+  const putTutorial = async (eleman) => {
+    await axios.put(`${url}${eleman.id}/`, eleman)
+    getTutorials()
+
+
+
+  }
+
+
   return (
     <div class="modal fade"
       id="editModal"
@@ -21,13 +36,13 @@ const EditBilgi = () => {
             <div className='mb-3'>
               <label htmlFor="title">Title
               </label>
-              <input type="text" className='form-control' id='title' value={""} />
+              <input type="text" className='form-control' id='title' value={title} onChange={(e) => setItem({ ...item, title: e.target.value })} />
             </div>
 
             <div className='mb-3'>
               <label htmlFor="desc">Description
               </label>
-              <input type="text" id='desc' className='form-control' value={""} />
+              <input type="text" id='desc' className='form-control' value={description} onChange={(e) => setItem({ ...item, description: e.target.value })} />
             </div>
 
 
@@ -38,7 +53,7 @@ const EditBilgi = () => {
 
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Save</button>
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" onClick={() => putTutorial(item)}>Save</button>
           </div>
         </div>
       </div>
