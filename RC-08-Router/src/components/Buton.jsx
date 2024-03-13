@@ -8,9 +8,9 @@ const Buton = () => {
 
   return (
     <div className='text-center'>
-      <Button className='btn btn-danger p-4 m-2'>LOGIN</Button>
-      <Button className='btn btn-danger p-4 m-2'>CLOSE</Button>
-      <Button className='btn btn-danger p-4 m-2'>ERASE</Button>
+      <Button className='btn btn-danger p-4 m-2 w-25' onClick={() => navigate("/login")}>LOGIN</Button>
+      <Button className='btn btn-danger p-4 m-2 w-25'>CLOSE</Button>
+      <Button className='btn btn-danger p-4 m-2 w-25'>ERASE</Button>
     </div>
   )
 }
