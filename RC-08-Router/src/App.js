@@ -7,6 +7,7 @@ import Teacher from './pages/Teacher';
 import Login from './pages/Login';
 import ContactForm from './pages/ContactForm';
 import CourseCard from './pages/CourseCard';
+import CardDetails from './pages/CardDetails';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 const App = () => {
   return (
@@ -18,7 +19,9 @@ const App = () => {
           <Route path="/teacher" element={<Teacher />} />
           <Route path="/contact" element={<ContactForm />} />
           <Route path="/courses" element={<CourseCard />} />
+          <Route path="/courses/:name" element={<CardDetails />} />
           <Route path="/login" element={<Login />} />
+
         </Routes>
         <Footer />
       </BrowserRouter>
