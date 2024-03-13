@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 const Teacher = () => {
   const [people, setPeople] = useState([]);
+  const navigate = useNavigate();
 
 
 
@@ -26,6 +28,7 @@ const Teacher = () => {
               <img
                 src={`https://api.dicebear.com/7.x/avataaars/svg?seed=${name}`}
                 alt=""
+                onClick={() => navigate(`/teacher/${id}`)}
               />
               <h5>{name}</h5>
               <h6>{username} </h6>
