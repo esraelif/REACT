@@ -10,20 +10,13 @@ export const Header = ({ setSelected }) => {
     setSelected(e)
     console.log("ee tıkladı")
   }
-
-
-
-
-
-
   return (
     <Container className="header">
       <h1>Products List</h1>
       <Stack
         direction="vertical"
         gap={3}
-        className="btns justify-content-center flex-md-row"
-      >
+        className="btns justify-content-center flex-md-row">
 
         {categories.map((e) =>
 
@@ -31,16 +24,6 @@ export const Header = ({ setSelected }) => {
             {e}
           </Button>
         )}
-
-
-
-
-
-
-
-
-
-
       </Stack>
     </Container>
   );

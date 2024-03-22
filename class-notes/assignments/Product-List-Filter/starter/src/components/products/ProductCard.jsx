@@ -29,9 +29,6 @@ const ProductCard = ({ id, price, image, title }) => {
         <Card.Title>{title}</Card.Title>
       </Card.Footer>
     </Card>
-
-
-
   );
 };
 
