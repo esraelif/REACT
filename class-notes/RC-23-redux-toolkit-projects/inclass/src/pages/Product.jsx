@@ -1,17 +1,21 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 import Navbar from "../components/Navbar"
 import { Grid, Typography } from '@mui/material';
 import ProductCard from '../components/ProductCard';
 import { Container } from '@mui/material';
+import { useDispatch } from "react-redux"
+import { getProductsData } from '../features/productSlice';
+import loadingImage from "../assets/loading.gif"
+import errorImage from "../assets/error.gif"
 
 const Product = () => {
-    const [products, setProducts] = useState([]);
+  const dispatch = useDispatch()
+  const { productsData, loading, error } = useSelector(state => state.products)
 
-    useEffect(() => {
-      fetch("https://dummyjson.com/products")
-        .then((res) => res.json())
-        .then((res) => setProducts(res.products));
-    }, []);
+  useEffect(() => {
+
+    dispatch(getProductsData())
+  }, []);
   return (
     <div>
       <Container>

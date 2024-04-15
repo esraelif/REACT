@@ -25,14 +25,14 @@ const productSlice = createSlice({
     },
     extraReducers: (builder) => {
         builder.addCase(getProductsData.pending, (state) => {
-            state.loading = true
-            state.error = false
+            state.loading = true;
+            state.error = false;
         }).addCase(getProductsData.fulfilled, (state, { payload }) => {
-            state.loading = false
-            state.productData = payload
+            state.loading = false;
+            state.productData = payload;
         }).addCase(getProductsData.rejected, (state) => {
-            state.loading = false
-            state.error = true
+            state.loading = false;
+            state.error = true;
         })
     }
 
