@@ -11,11 +11,8 @@ const AppRouter = () => {
   return (
     <Router>
       <Routes>
-        {/* middlewareli fonksiyonların olduğu sayfalar */}
-        {/* <Route path="/" element={<LoginMid />} />
-        <Route path="register" element={<RegisterMid />} /> */}
         <Route path="/" element={<Login />} />
-        <Route path="register" element={<Register />} />        
+        <Route path="register" element={<Register />} />
         <Route path="stock" element={<PrivateRouter />}>
           <Route path="" element={<Dashboard />} />
         </Route>
