@@ -10,7 +10,15 @@ import * as Yup from "yup";
 import image from "../assets/regi.avif";
 import AuthHeader from "../components/AuthHeader";
 import AuthImage from "../components/AuthImage";
+import useAuthCall from "../hooks/useAuthCall";
 
+//! Yup ile istediğimiz alanlara istediğimiz validasyon koşullarını
+//  oluşturuyoruz. Sonra oluşturduğumuz bu şemayı formike tanımlayarak
+//  kullanıyoruz. Böylelikle formik hem formumuzu yönetiyor hem de verdiğimiz
+//  validationSchema yı uyguluyor. Dikkat edilmesi gereken husus; formikte
+//  tanımladığımız initialValues daki keylerle, Yupta tanımladığımız keylerin
+//  aynı olması. Eğer bir harf bile farklı olsa o alanla ilgili yazdığınız
+//  validation çalışmaz.
 const SignupSchema = Yup.object().shape({
   username: Yup.string().min(3).max(15).required("Required!"),
   firstName: Yup.string()
@@ -23,15 +31,21 @@ const SignupSchema = Yup.object().shape({
     .required("Required"),
   email: Yup.string().email("Invalid email").required("Required"),
   password: Yup.string()
-    .min(8)
-    .max(50)
-    .matches(/\d+/, "Please write at least a number")
-    .matches(/[A-Z]/, "Please write at least one capital letter")
-    .matches(/[a-z]/, "Please write at least one smallest letter")
-    .matches(/[@$?!%&*]+/, "Please write at least one special character(@$?!%&*)")
+    .min(8, "Er muss mindestens 8 Zeichen lang sein!")
+    .max(50, "Er darf maximal 50 Zeichen lang sein!")
+    .matches(/\d+/, "Muss mindestens eine Ziffer enthalten!")
+    .matches(/[a-z]/, "Muss mindestens einen Kleinbuchstaben enthalten!")
+    .matches(/[A-Z]/, "Muss mindestens einen Großbuchstaben enthalten!")
+    .matches(
+      /[@$?!%&*]+/,
+      "Muss mindestens ein Sonderzeichen (@$!%*?&) enthalten!"
+    )
+    .required(),
 });
 
 const Register = () => {
+  const { register } = useAuthCall()
+
   return (
     <Container maxWidth="lg">
       <Grid
@@ -78,6 +92,7 @@ const Register = () => {
             onSubmit={(values) => {
               // same shape as initial values
               console.log(values);
+              register(values)
             }}
           >
             {({
@@ -94,14 +109,20 @@ const Register = () => {
                 <Box sx={{ display: "flex", flexDirection: "column", gap: 2 }}>
                   <TextField
                     id="username"
-                    name="username"
+                    name="username" //formik name attributedından eşleştirme yapıyor.
                     label="Username"
                     value={values.username}
                     onChange={handleChange}
-                    onBlur={handleBlur}
-                    error={touched.username && Boolean(errors.username)}
-                    helperText={touched.username && errors.username}
+                    inputProps={{
+                      autoComplete: "off"  // Burada "autoComplete" kullanılmalıdır.
+                    }}
+                    onBlur={handleBlur} // kullanıcının input alanından ayrıldığını yaklayan event
+                    error={touched.username && Boolean(errors.username)} //validationda verdiğimiz kalıba uymazsa rengi errora çevirmesi için error attribute ı benden false/true degeri bekliyor ondan dolayı daha sağlıklı olması için boolean deger döndürüyoruz.
+                    // touched da kullanıcının inputa tıklayıp tıklamadığını yakalıyor
+                    helperText={touched.username && errors.username} //validationda verdiğimiz kalıba uymazsa ilgili mesajları göstermesi için errors dan gelen mesajı yakalıyoruz.
                   />
+                  {/* error ve helperText propertyleri Textfield componentine ait propertyler. */}
+                  {/* mui textfield kullanmadığımzda <span>{touched.username && errors.username}</span> */}
                   <TextField
                     id="firstName"
                     name="firstName"
@@ -145,7 +166,9 @@ const Register = () => {
                     error={touched.password && Boolean(errors.password)}
                     helperText={touched.password && errors.password}
                   />
-                  <Button variant="contained" type="submit">Sign Up</Button>
+                  <Button variant="contained" type="submit">
+                    Sign Up
+                  </Button>
                 </Box>
               </Form>
             )}

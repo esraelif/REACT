@@ -14,13 +14,13 @@ const authSlice = createSlice({
       state.loading = true;
       state.error = false;
     },
-    registerSuccess: (state, { payload }) => {
+    registerSuccess: (state,{payload})=>{
       state.loading = false;
       state.currentUser = payload.data.username
       state.token = payload.token
     },
-    //! user bilgisi farklı geldiği için ayrı slice açtık
-    loginSuccess: (state, { payload }) => {
+     //! user bilgisi farklı geldiği için ayrı slice açtık
+     loginSuccess: (state, { payload }) => {
       state.loading = false;
       state.currentUser = payload?.user?.username;
       state.isAdmin = payload?.user?.isAdmin;
